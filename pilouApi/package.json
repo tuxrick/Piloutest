@@ -1,0 +1,44 @@
+{
+    "name": "PilouAPI",
+    "version": "1.0.0",
+    "description": "Pilou API",
+    "main": "app.js",
+    "scripts": {
+        "dev": "nodemon app.js",
+        "start": "node app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Ricardo Hernández",
+    "license": "Apache",
+    "dependencies": {
+        "@hapi/joi": "^17.1.1",
+        "axios": "^0.21.4",
+        "base64url": "^3.0.1",
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.20.1",
+        "common": "^0.2.5",
+        "cors": "^2.8.5",
+        "dotenv": "^5.0.1",
+        "ejs": "^3.1.8",
+        "eth-sig-util": "^3.0.1",
+        "express": "^4.17.1",
+        "express-fileupload": "^1.4.0",
+        "express-formidable": "^1.2.0",
+        "express-handlebars": "^5.2.0",
+        "express-session": "^1.17.1",
+        "fs": "^0.0.1-security",
+        "generic-pool": "^3.7.1",
+        "http": "^0.0.1-security",
+        "iso8601": "^1.1.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.6.6",
+        "mongoose": "^6.3.4",
+        "mysql2": "^1.6.5",
+        "nodemailer": "^6.7.5",
+        "nodemon": "^1.19.4"
+    },
+    "devDependencies": {
+        "hardhat": "^2.10.1"
+    }
+}
