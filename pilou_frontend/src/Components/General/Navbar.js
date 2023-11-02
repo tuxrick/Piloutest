@@ -33,7 +33,7 @@ function Navbar() {
     window.location.reload();
   }
   function handleGoToProfile() {
-    navigate('/user_info');
+    navigate('/user_info/'+loginData.data._id);
   }
 
   return (

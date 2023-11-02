@@ -32,3 +32,12 @@ export const getUserList = async (data) => {
     throw error;
   }
 };
+
+export const getUserInfo = async (user_id) => {
+  try {
+    const response = await api.get('/user/user_data/'+user_id);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
