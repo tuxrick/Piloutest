@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Container, Paper, Grid, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { QrReader } from 'react-qr-reader';
+import Navbar from '../General/Navbar';
 
 
 function Home() {
   const navigate = useNavigate();
   const login_data = useSelector((state) => state.loginResponse);
+
+  const [loginData, setloginData] = useState(false);
+
+  useEffect(() => {
+    if(login_data){
+      setloginData(login_data);
+    }else{
+        setloginData(false);
+    }
+  }, []);
+
 
   const [scanResult, setScanResult] = useState(null);
   const [scanning, setScanning] = useState(false);
@@ -43,11 +55,13 @@ function Home() {
   }
 
   return (
+    <>
+    <Navbar/>
     <Container>
-      <Paper elevation={3} style={{ padding: '20px' }}>
-        { login_data &&
+      <Paper elevation={3} style={{ padding: '20px', marginTop:"20px" }}>
+        { loginData &&
             <Typography variant="h4" gutterBottom>
-                Bienvenido {login_data.data.name}
+                Bienvenido { !loginData ? "" : loginData.data.name}
             </Typography>
         }
         <Grid container spacing={3}>
@@ -81,14 +95,14 @@ function Home() {
             )}
 
             </Grid>
-            { !login_data.data.name &&
+            { !loginData &&
                 <Grid item xs={3}>
                     <Button variant="contained" color="primary" onClick={handleLogin}>
                         Iniciar Sesión
                     </Button>
                 </Grid>
             }
-            { login_data &&
+            { loginData &&
                 <Grid item xs={3}>
                     <Button variant="contained" color="primary" onClick={handleUserList}>
                         Ver lista de usuarios
@@ -99,6 +113,7 @@ function Home() {
       </Paper>
       {scanResult && <p>Resultado del escaneo: {scanResult}</p>}
     </Container>
+    </>
   );
 }
 

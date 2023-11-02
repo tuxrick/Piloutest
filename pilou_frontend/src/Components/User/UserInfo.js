@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import {Container, Paper, Typography, TextField, Button } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import {Container, Paper, Typography } from '@mui/material';
+import Navbar from '../General/Navbar';
 
 function UserInfo() {
 
   return (
-    <Container>
-      <Paper elevation={3} style={{ padding: '20px' }}>
-        <Typography>User Info</Typography>
-      </Paper>
-    </Container>
+    <>
+      <Navbar/>
+      <Container>
+        <Paper elevation={3} style={{ padding: '20px', marginTop:"20px" }}>
+          <Typography>User Info</Typography>
+        </Paper>
+      </Container>
+    </>
   );
 }
 

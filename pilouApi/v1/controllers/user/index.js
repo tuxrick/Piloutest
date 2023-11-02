@@ -60,6 +60,7 @@ module.exports = {
 
             return requests.success_response(req, res, 
                 {
+                    _id: user._id,
                     email: user.email,
                     name: user.name,
                     role: user.role,
@@ -107,6 +108,7 @@ module.exports = {
             
             return requests.success_response(req, res, 
                 {
+                    _id: user._id,
                     email:user.email,
                     name: user.name,
                     token: token

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Container, Paper, Typography, TextField, Button } from '@mui/material';
 import {login} from '../../Services/ServiceList';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLoginResponse } from '../../actions';
 import { useNavigate } from 'react-router-dom';
+
 
 function Login() {
   const navigate = useNavigate();
@@ -14,8 +15,14 @@ function Login() {
   const [errorData, setErrorData] = useState(false);
 
   const dispatch = useDispatch();
-  //const loginResponse = useSelector((state) => state.loginResponse);
-  //console.log('loginResponse:', loginResponse);
+  const login_data = useSelector((state) => state.loginResponse);
+
+  useEffect(() => {
+    if(login_data){
+      navigate('/');
+    }
+  }, []);
+
 
   const handleLogin = async () => {
 
