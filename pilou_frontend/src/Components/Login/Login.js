@@ -37,7 +37,7 @@ function Login() {
       }else{
         setLoading(false);
         setErrorData(true);
-        dispatch(setLoginResponse(null));        
+        dispatch(setLoginResponse(null));
       }
       console.log('Respuesta del servidor:', login_data);
     } catch (error) {

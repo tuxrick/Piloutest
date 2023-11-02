@@ -12,7 +12,6 @@ function UserInfo() {
 
   useEffect(() => {
     setUserInfo();
-    console.log(userData)
   },[]);
 
   async function setUserInfo() {

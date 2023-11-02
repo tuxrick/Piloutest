@@ -32,6 +32,10 @@ function Home() {
     navigate('/user_list');
   }
 
+  function handleUserRegister(){
+    navigate('/user_register');
+  }
+
   async function handleScan(data) {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -109,6 +113,11 @@ function Home() {
                     </Button>
                 </Grid>
             }
+            <Grid item xs={3}>
+                <Button variant="contained" color="primary" onClick={handleUserRegister}>
+                    Registrar Usuario
+                </Button>
+            </Grid>
         </Grid>
       </Paper>
       {scanResult && <p>Resultado del escaneo: {scanResult}</p>}

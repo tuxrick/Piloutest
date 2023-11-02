@@ -41,3 +41,12 @@ export const getUserInfo = async (user_id) => {
     throw error;
   }
 };
+
+export const registerUser = async (data) => {
+  try {
+    const response = await api.post('/user/register', data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
