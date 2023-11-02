@@ -16,3 +16,19 @@ export const login = async (data) => {
     throw error;
   }
 };
+
+export const getUserList = async (data) => {
+  try {
+    const token = data.token;
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    };  
+    
+    const response = await api.get('/user/list_users', config);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};

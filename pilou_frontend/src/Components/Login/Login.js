@@ -1,34 +1,44 @@
 import React, { useState } from 'react';
 import {Container, Paper, Typography, TextField, Button } from '@mui/material';
 import {login} from '../../Services/ServiceList';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLoginResponse } from '../../actions';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorData, setErrorData] = useState(false);
 
   const dispatch = useDispatch();
-  const loginResponse = useSelector((state) => state.loginResponse);
-  console.log('loginResponse:', loginResponse);
+  //const loginResponse = useSelector((state) => state.loginResponse);
+  //console.log('loginResponse:', loginResponse);
 
   const handleLogin = async () => {
 
     setLoading(true);
     try {
       const login_data = await login({email: email, password: password});
-      dispatch(setLoginResponse(login_data));
-      setLoading(false);
-      setErrorData(false);
+      if(login_data.status === "success"){
+        dispatch(setLoginResponse(login_data));
+        setLoading(false);
+        setErrorData(false);
+        navigate('/home');
+      }else{
+        setLoading(false);
+        setErrorData(true);
+        dispatch(setLoginResponse(null));        
+      }
       console.log('Respuesta del servidor:', login_data);
     } catch (error) {
       setLoading(false);
       setErrorData(true);
       dispatch(setLoginResponse(null));
       console.error('Error al enviar datos:', error);
-    }    
+    }
   };
 
   return (
