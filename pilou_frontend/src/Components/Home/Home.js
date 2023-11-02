@@ -49,6 +49,7 @@ function Home() {
         qrReader.scan((result) => {
           if (result) {
             setScanResult(result);
+            alert(result);
             qrReader.stop();
             stream.getTracks().forEach((track) => track.stop());
           }
